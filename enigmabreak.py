@@ -3,19 +3,9 @@ import datetime
 import multiprocessing
 ALPHABET="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-enigma._enigmatest()
 
-plug=enigma.Plugboard({'A':'M', 'F':'I', 'N':'V', 'P':'S', 'T':'U', 'W':'Z'})
-
-myenigma=enigma.Enigma(rotors=[2, 1, 3], reflector="A", plugboard=plug)
-myenigma.initialization2('XMV', 'ABL')
 test='GCDSEAHUGWTQGRKVLFGXUCALXVYMIGMMNMFDXTGNVHVRMMEVOUYFZSLRHDRRXFJWCFHUHMUNZEFRDISIKBGPMYVXUZ'
-text=''
-for ch in test:
-    if ch!=' ':
-        text+=myenigma.encryption(ch, True)
-print(test)
-print(text)
+text='FEINDLIQEINFANTERIEKOLONNEBEOBAQTETXANFANGSUEDAUSGANGBAERWALDEXENDEDREIKMOSTWAERTSNEUSTADT'
 
 
 #print possible cycles. Is chain begins and ends with one character it is cycle
