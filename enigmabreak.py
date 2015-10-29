@@ -3,7 +3,6 @@ import datetime
 import multiprocessing
 ALPHABET="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-
 test='GCDSEAHUGWTQGRKVLFGXUCALXVYMIGMMNMFDXTGNVHVRMMEVOUYFZSLRHDRRXFJWCFHUHMUNZEFRDISIKBGPMYVXUZ'
 text='FEINDLIQEINFANTERIEKOLONNEBEOBAQTETXANFANGSUEDAUSGANGBAERWALDEXENDEDREIKMOSTWAERTSNEUSTADT'
 
@@ -36,7 +35,9 @@ for i in range(len(test)):
     print('-----------')
 print('--------')
 
-# Searching rotors start positions with selected cucles
+#This function works only for specific plaintext, if you want to decrypt another message you should to rewrite this method
+# Searching rotors start positions with selected cycles:
+#71.N-14.K-37.T-N; 32.N-10.T-N; 39.N-5.A-16.L-13.R-N; 32.N-10.T-N-37.T-N; 34.N-22.A-48.O-3.S-N
 def globalSearch(start, end):
     plug=enigma.Plugboard({})
     myenigmas=[]
@@ -85,9 +86,9 @@ def globalSearch(start, end):
                         text5=myenigmas[14].encryption(text5, False)
                         if ALPHABET[i]==text1 and ALPHABET[i]==text2 and ALPHABET[i]==text3 and ALPHABET[i]==text4 and ALPHABET[i]==text5:
                             found=True
-                            print(ALPHABET[i]+'->'+text4)
-                            print(ALPHABET[a]+ALPHABET[b]+ALPHABET[c])
-                            print('AA'+ALPHABET[d])
+                            print('N connected to '+ALPHABET[i]+' on plugboard')
+                            print('Rotors positions: %s%s%s' %(ALPHABET[a],ALPHABET[b],ALPHABET[c]))
+                            print('Rings positions: AA%s' %ALPHABET[d])
                             print(datetime.datetime.now())
 
     print("End: "+str(datetime.datetime.now()))
@@ -105,4 +106,3 @@ if __name__=="__main__":
     p2.start()
     p3.start()
     p4.start()
-
